@@ -46,6 +46,15 @@
             background: #275176;
         }
         
+        /* Hide scrollbar for carousel but allow functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
         .hero-gradient {
             background: linear-gradient(rgba(39, 81, 118, 0.7), rgba(39, 81, 118, 0.8));
         }
@@ -77,6 +86,7 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
+                    <a href=""><img src="./img/logo_transparent.png" alt="Rhythm and Flow Logo" width="72px"></a>
                     <a href="#" class="font-heading text-2xl tracking-widest text-brand-dark font-bold">
                         RHYTHM <span class="text-brand-teal font-normal">& FLOW</span>
                     </a>
@@ -88,7 +98,7 @@
                     <a href="#gallery" class="text-brand-text hover:text-brand-teal transition-colors text-sm uppercase tracking-wide">Gallery</a>
                     <a href="#story" class="text-brand-text hover:text-brand-teal transition-colors text-sm uppercase tracking-wide">Our Story</a>
                     <a href="#testimonials" class="text-brand-text hover:text-brand-teal transition-colors text-sm uppercase tracking-wide">Testimonials</a>
-                    <a href="#contact" class="px-6 py-2.5 bg-brand-dark text-white text-sm uppercase tracking-wider hover:bg-brand-teal transition-colors duration-300">
+                    <a href="#contact" class="px-6 py-2.5 bg-brand-teal text-white text-sm uppercase tracking-wider hover:bg-brand-dark transition-colors duration-300">
                         Book Class
                     </a>
                 </div>
@@ -109,7 +119,7 @@
                 <a href="#gallery" class="text-brand-text hover:text-brand-teal block text-lg py-2">Gallery</a>
                 <a href="#story" class="text-brand-text hover:text-brand-teal block text-lg py-2">Our Story</a>
                 <a href="#testimonials" class="text-brand-text hover:text-brand-teal block text-lg py-2">Testimonials</a>
-                <a href="#contact" class="w-full text-center mt-4 px-6 py-3 bg-brand-dark text-white uppercase tracking-wider hover:bg-brand-teal transition-colors">
+                <a href="#contact" class="w-full text-center mt-4 px-6 py-3 bg-brand-teal text-white uppercase tracking-wider hover:bg-brand-dark transition-colors">
                     Book Class
                 </a>
             </div>
@@ -164,7 +174,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-white">
+    <section id="services" class="py-24 bg-white relative group/carousel">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-brand-teal uppercase tracking-widest text-sm font-bold">What We Offer</span>
@@ -172,64 +182,163 @@
                 <div class="w-24 h-1 bg-brand-teal mx-auto opacity-30"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop" alt="Reformer Pilates" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="relative">
+                <!-- Navigation Buttons -->
+                <button id="slideLeft" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white p-3 rounded-full shadow-lg text-brand-dark hover:text-brand-teal hover:scale-110 transition-all duration-300 hidden md:flex items-center justify-center border border-gray-100">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="slideRight" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white p-3 rounded-full shadow-lg text-brand-dark hover:text-brand-teal hover:scale-110 transition-all duration-300 hidden md:flex items-center justify-center border border-gray-100">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Carousel Container -->
+                <div id="servicesContainer" class="flex overflow-x-auto gap-6 snap-x snap-mandatory no-scrollbar pb-8 px-2 scroll-smooth">
+
+                    <!-- Service 1: Pilates -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop" alt="Reformer Pilates" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Pilates</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                Utilize spring-based resistance to improve strength, flexibility, and posture. Suitable for all levels.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="font-heading text-2xl text-brand-dark mb-3">Reformer Pilates</h3>
-                        <p class="text-brand-text/70 leading-relaxed mb-6">
-                            Utilize spring-based resistance to improve strength, flexibility, and posture. Suitable for all levels from beginner to advanced.
-                        </p>
-                        <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
-                            Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
+
+                    <!-- Service 2: Aerial Yoga -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2069&auto=format&fit=crop" alt="Mat Pilates" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Aerial Yoga</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                A classic full-body workout focusing on core strength and spinal alignment using your own body weight.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
                     </div>
+
+                    <!-- Service 3: Bungee -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Personal Training" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Bungee</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                One-on-one sessions tailored specifically to your body's needs, injuries, and fitness goals.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Barre Sculpt -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1550259979-ed79b48d2a30?q=80&w=2068&auto=format&fit=crop" alt="Barre Sculpt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Barre Sculpt</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                A dynamic fusion of ballet, Pilates, and yoga to tone muscles and improve balance with high energy.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 5: Vinyasa Yoga -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544367563-12123d8966cd?q=80&w=2070&auto=format&fit=crop" alt="Vinyasa Yoga" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Vinyasa Yoga</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                Flowing movement connecting breath and posture to build heat, endurance, and mental clarity.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 6: Pre/Post Natal -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop" alt="Pre/Post Natal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Pre/Post Natal</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                Specialized, safe movement support for mothers during pregnancy and recovery after birth.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 7: HIIT Fusion -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" alt="HIIT Fusion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">HIIT Fusion</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                High-intensity interval training combined with Pilates principles for cardio health and control.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Service 8: Stretch & Recovery -->
+                    <div class="min-w-[320px] md:min-w-[380px] snap-center group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552674605-469523f5405c?q=80&w=2070&auto=format&fit=crop" alt="Stretch & Recovery" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-heading text-2xl text-brand-dark mb-3">Stretch & Recovery</h3>
+                            <p class="text-brand-text/70 leading-relaxed mb-6">
+                                Deep restorative stretching and myofascial release to improve mobility and reduce soreness.
+                            </p>
+                            <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
+                                Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- Service 2 -->
-                <div class="group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2069&auto=format&fit=crop" alt="Mat Pilates" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-heading text-2xl text-brand-dark mb-3">Mat Pilates</h3>
-                        <p class="text-brand-text/70 leading-relaxed mb-6">
-                            A classic full-body workout focusing on core strength and spinal alignment using your own body weight and small props.
-                        </p>
-                        <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
-                            Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
+                <!-- Progress Bar -->
+                <div class="mt-8 max-w-xs mx-auto h-1 bg-gray-200 rounded-full overflow-hidden">
+                    <div id="scrollProgress" class="h-full bg-brand-teal w-0 transition-all duration-100 ease-out"></div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="group relative overflow-hidden bg-brand-light transition-all duration-300 hover:shadow-xl">
-                    <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop" alt="Private Training" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-heading text-2xl text-brand-dark mb-3">Personal Training</h3>
-                        <p class="text-brand-text/70 leading-relaxed mb-6">
-                            One-on-one sessions tailored specifically to your body's needs, injuries, and fitness goals.
-                        </p>
-                        <a href="#contact" class="inline-flex items-center text-brand-teal uppercase tracking-wider text-xs font-bold hover:text-brand-dark transition-colors">
-                            Book Session <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Our Story Section -->
-    <section id="story" class="py-24 bg-brand-dark text-white overflow-hidden">
+    <!-- section id="story" class="py-24 bg-brand-dark text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 
-                <!-- Text Content -->
+                //Text Content
                 <div class="lg:w-1/2 order-2 lg:order-1">
                     <span class="text-brand-teal uppercase tracking-widest text-sm font-bold block mb-4">About Rhythm & Flow</span>
                     <h2 class="font-heading text-4xl md:text-5xl mb-6">Our Story</h2>
@@ -263,18 +372,18 @@
                     </div>
                 </div>
 
-                <!-- Image Composition -->
+                //Image Composition
                 <div class="lg:w-1/2 order-1 lg:order-2 relative">
                     <div class="relative z-10">
                         <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop" alt="Instructor helping student" class="w-full h-auto object-cover rounded shadow-2xl border-8 border-brand-light/5">
                     </div>
-                    <!-- Decorative element -->
+                    //Decorative element
                     <div class="absolute -bottom-10 -left-10 w-full h-full border border-brand-teal/30 z-0"></div>
                 </div>
 
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Image Gallery Section -->
     <section id="gallery" class="py-24 bg-brand-light">
@@ -500,14 +609,51 @@
             </div>
             
             <div class="pt-8 text-center text-brand-light/40 text-xs">
-                <p>&copy; 2025 Rhythm and Flow. All rights reserved.</p>
+                <p>&copy; 2026 Rhythm and Flow. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Icon -->
+    <a href="https://wa.me/919833416617?text=Hello,%20I'm%20interested%20in%20booking%20a%20trial%20session" target="_blank" title="Contact us on WhatsApp" class="fixed bottom-8 right-8 bg-[#25D366] text-white rounded-full shadow-lg duration-300 z-50 transform hover:scale-110">
+        <img src="./img/icons/whatsapp.svg" class="w-12 h-12 md:w-16 md:h-16" alt="WhatsApp Icon" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg'">
+    </a>
+
     <script>
         // Initialize Icons
         lucide.createIcons();
+
+        // Carousel Logic
+        const container = document.getElementById('servicesContainer');
+        const slideLeft = document.getElementById('slideLeft');
+        const slideRight = document.getElementById('slideRight');
+        const scrollProgress = document.getElementById('scrollProgress');
+
+        // Function to update progress bar
+        const updateProgressBar = () => {
+            const scrollLeft = container.scrollLeft;
+            const maxScrollLeft = container.scrollWidth - container.clientWidth;
+            // Prevent division by zero if content fits perfectly
+            const percentage = maxScrollLeft > 0 ? (scrollLeft / maxScrollLeft) * 100 : 0;
+            scrollProgress.style.width = `${percentage}%`;
+        };
+
+        // Event listeners
+        container.addEventListener('scroll', updateProgressBar);
+        window.addEventListener('resize', updateProgressBar);
+
+        // Slide Button Logic with progress update
+        slideLeft.addEventListener('click', () => {
+            container.scrollBy({ left: -400, behavior: 'smooth' });
+            // Note: scroll event will trigger updateProgressBar
+        });
+
+        slideRight.addEventListener('click', () => {
+            container.scrollBy({ left: 400, behavior: 'smooth' });
+        });
+        
+        // Initial calculation
+        updateProgressBar();
 
         // Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
